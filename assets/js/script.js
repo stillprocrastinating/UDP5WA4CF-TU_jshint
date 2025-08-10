@@ -13,7 +13,6 @@ async function getStatus(e) {
         displayStatus(data);
     } else {
         throw new Error(data.error);
-        
     }
 }
 
@@ -24,4 +23,25 @@ function displayStatus(data) {
     document.getElementById("resultsModalTitle").innerText = heading;
     document.getElementById("results-content").innerHTML = results;
     resultsModal.show();
+}
+
+// <button id="submit">
+document.getElementById("submit").addEventListener("click", e => postForm(e));
+
+// <form id="checks-form"
+async function postForm(e) {
+    const form = new FormData(document.getElementById("checksform"));
+
+    // Test functionality
+    //for (let e of form.entries()) {
+    //    console.log(e);
+    //}
+
+    const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+            "Authorisation": API_KEY,
+        },
+        body: form,
+    })
 }
