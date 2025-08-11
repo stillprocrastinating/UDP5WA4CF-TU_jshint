@@ -90,7 +90,7 @@ function processOptions() {
     return form;
 }
 
-displayException(data) {
+function displayException(data) {
     let heading = `An Exception Occurred`;
 
     results = `<div>The API returned status code ${data.status_code}</div>`;
