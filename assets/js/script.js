@@ -30,7 +30,7 @@ document.getElementById("submit").addEventListener("click", e => postForm(e));
 
 // <form id="checks-form"
 async function postForm(e) {
-    const form = new FormData(document.getElementById("checksform"));
+    const form = processOptions(new FormData(document.getElementById("checksform")));
 
     // Test functionality
     for (let entry of form.entries()) {
@@ -72,4 +72,18 @@ function displayErrors(data) {
     document.getElementById("resultsModalTitle").innerText = heading;
     document.getElementById("resultts-content").innerHTML = results;
     resultsModal.show();
+}
+
+function processOptions() {
+    let optArray = [];
+
+    for (let entry of form.entries()) {
+        if (entry[0] === "options") {
+            optArray.push(entry[1]);
+        }
+    }
+
+    form.delete("options");
+    form.append("options", optArray.join());
+    return form;
 }
