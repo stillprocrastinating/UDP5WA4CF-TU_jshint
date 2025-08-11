@@ -33,9 +33,9 @@ async function postForm(e) {
     const form = new FormData(document.getElementById("checksform"));
 
     // Test functionality
-    //for (let e of form.entries()) {
-    //    console.log(e);
-    //}
+    for (let entry of form.entries()) {
+        console.log(entry);
+    }
 
     const response = await fetch(API_URL, {
         method: "POST",
